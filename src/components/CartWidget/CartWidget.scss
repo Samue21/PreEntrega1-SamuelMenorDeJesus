@@ -1,0 +1,33 @@
+.carrito-compras{
+    padding: 1rem;
+}
+.carrito{
+    width: 3rem;
+    height: 3rem;
+    cursor: pointer;
+}
+
+.badge{
+    padding-left: 2px;
+    padding-right: 6px;
+    color: red;
+    background-color: #fff;
+    -moz-border-radius: 9px;
+     -webkit-border-radius: 9px;
+     border-radius: 9px;
+    font-size: 1rem;
+    font-weight: 700;
+    user-select: none;
+    position: relative;
+    top: -36px;
+    right: 16px;
+}
+
+// #lblCartCount {
+//     font-size: 12px;
+//     background: #ff0000;
+//     color: #fff;
+//     padding: 0 5px;
+//     vertical-align: top;
+//     margin-left: -10px; 
+// }
