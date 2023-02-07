@@ -1,4 +1,4 @@
-@import "../Utilidades/mixins.scss";
+@import "../../styles/Utilidades/mixins.scss";
 
 .logo-spartan{
     width: 10rem;
@@ -73,4 +73,15 @@
     }
 
     
+}
+
+.select {
+    color: #0d54a8 !important;
+            
+    font-size: 1.8rem !important;
+  }
+.unselect {
+    color: #ffffff;
+
+    font-size: 1.5rem;
 }

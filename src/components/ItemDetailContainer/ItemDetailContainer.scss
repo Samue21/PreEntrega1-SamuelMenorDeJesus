@@ -1,0 +1,12 @@
+@import "../../styles/Utilidades/mixins.scss";
+.contenedor-producto{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    .img-prod{
+        max-width: 100%;
+
+        img{
+            max-width: 85%;
+        }
+    }
+}

@@ -1,0 +1,23 @@
+.producto {
+    background-color: lighten(#e1e1e1, 5);
+    border: 1px solid darken(#e1e1e1, 10);
+  
+    margin: 1rem;
+    max-width: 28rem;
+  
+    .contenido-producto {
+      padding: 2rem;
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+    }
+  
+    h3,
+    p {
+      margin: 0;
+    }
+    .precio {
+      color: #71b100;
+      font-weight: bold;
+      font-size: 3rem;
+    }
+  }

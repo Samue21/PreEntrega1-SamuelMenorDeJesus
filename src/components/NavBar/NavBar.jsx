@@ -1,19 +1,21 @@
 import React from "react";
+import { Link, NavLink } from "react-router-dom";
 import logoSpartan from "../../assets/white-logo.png";
 import { CartWidget } from "../CartWidget/CartWidget";
 import "./Navbar.scss";
 
+let activeClassName = "select";
+
 const NavBar = () => {
   return (
     <div className="header barra">
-      <a href="index.html">
-        <img className="logo-spartan" src={logoSpartan} alt="logo spartan" />
-      </a>
+      <NavLink to='/'><img className="logo-spartan" src={logoSpartan} alt="logo spartan" /></NavLink>
+      
 
       <nav className="navegacion">
-        <a href="#">Mujeres</a>
-        <a href="#">Hombres</a>
-        <a href="#">Niños</a>
+        <NavLink to="/categoria/Mujer" className={({ isActive }) => isActive ? activeClassName : undefined }>Mujeres</NavLink>
+        <NavLink to="/categoria/Hombre" className={({ isActive }) => isActive ? activeClassName : undefined } >Hombres</NavLink>
+        <NavLink to="/categoria/Nino" className={({ isActive }) => isActive ? activeClassName : undefined }>Niños</NavLink>
       </nav>
 
       <CartWidget />

@@ -1,4 +1,108 @@
-h1{
-    text-align: center;
-    color: #000;
+@import "../../styles/Utilidades/mixins.scss";
+h1 {
+  text-align: center;
+  color: #000;
 }
+p {
+  color: #000;
+}
+body {
+  color: #000;
+}
+.bodyPagina {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+
+  .contenedor-productos {
+    @include grid(3, 2rem);
+  }
+}
+img {
+  max-width: 28rem;
+  cursor: pointer;
+}
+
+.producto {
+  background-color: lighten(#e1e1e1, 5);
+  border: 1px solid darken(#e1e1e1, 10);
+
+  margin: 1rem;
+  max-width: 28rem;
+
+  .contenido-producto {
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+  }
+
+  h3,
+  p {
+    margin: 0;
+  }
+  .precio {
+    color: #71b100;
+    font-weight: bold;
+    font-size: 3rem;
+  }
+}
+
+.boton-amarillo-block {
+  @include boton(#71b100, block);
+}
+
+.frame {
+  margin: 1rem 0 1rem 2rem;
+  width: 250px;
+  border-radius: 2px;
+  box-shadow: 4px 8px 16px 0 rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  color: #333;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.todo-cmp {
+  background: #ffffff;
+  color: #000;
+  padding: 5px 0 30px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 14px rgba(0, 0, 0, 0.15);
+
+  &__header {
+    text-align: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+
+    h2 {
+      font-weight: 700;
+      margin: 4px auto;
+      padding: 0;
+    }
+    p {
+      padding: 0 0 5px;
+      margin: 4px auto;
+      font-size: 0.8rem;
+    }
+  }
+
+  &__list {
+    list-style: none;
+    padding: 0;
+
+    li {
+      padding: 10px 0 15px;
+      margin: 0;
+      text-align: center;
+      width: 100%;
+
+      h3 {
+        cursor: pointer;
+        display: block;
+        margin: 0;
+        color: darken(#8b8b8b, 10);
+      }
+    }
+  }
+}
+
+
