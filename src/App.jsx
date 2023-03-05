@@ -1,35 +1,41 @@
-import { useState } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 
 import NavBar from "./components/NavBar/NavBar";
 import { ItemListContainer } from "./components/ItemListContainer/ItemListContainer";
-import { ItemCount } from "./components/ItemCount/ItemCount";
 import { ItemDetailContainer } from "./components/ItemDetailContainer/ItemDetailContainer";
 import { CartContainer } from "./components/CartContainer/CartContainer";
 
 import "./App.css";
+import { CartContextProvider } from "./context/CartContext";
+
+
+
 
 function App() {
-  const [count, setCount] = useState(0);
 
   return (
     <BrowserRouter>
 
-      <NavBar />
+      <CartContextProvider>
 
-      <Routes>
-        <Route path="/" element={ <ItemListContainer saludo="Hola, Bienvenido" />} />
-        <Route path="/categoria/:idCategoria" element={ <ItemListContainer saludo="Hola, Bienvenido" />} />
-        {/* <Route path="/subcategoria/:idSubcategoria" element={ <ItemListContainer saludo="Hola, Bienvenido" />} /> */}
+        <NavBar />
 
-        <Route path="/detalle/:idProducto" element={ <ItemDetailContainer /> } />
-        <Route path="/cart" element={ <CartContainer /> } />
+        <Routes>
+          <Route path="/" element={ <ItemListContainer saludo="Hola, Bienvenido" />} />
+          <Route path="/categoria/:idCategoria" element={ <ItemListContainer saludo="Hola, Bienvenido" />} />
+          <Route path="/subcategoria/:idSubcategoria" element={ <ItemListContainer saludo="Hola, Bienvenido" />} />
 
-        <Route path="*" element={<Navigate to='/'/>}></Route>
-      </Routes>
+          <Route path="/detalle/:idProducto" element={ <ItemDetailContainer /> } />
+
+          <Route path="/cart" element={ <CartContainer /> } />
+
+          <Route path="*" element={<Navigate to='/'/>}></Route>
+        </Routes>
+
+      </CartContextProvider>
       
 
-      {/* <ItemCount /> */}
+    
 
     </BrowserRouter>
   );

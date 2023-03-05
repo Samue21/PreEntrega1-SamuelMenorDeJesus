@@ -1,0 +1,130 @@
+.cart-container {
+    background-color: #fff;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 20px;
+    
+    .cart-title {
+      text-align: center;
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+    
+    .cart-items {
+      display: flex;
+      flex-direction: column;
+      
+      .cart-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid #ccc;
+        padding: 10px;
+        margin-bottom: 10px;
+        
+        .item-img {
+          width: 200px;
+          height: 200px;
+          margin-right: 10px;
+          
+          img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: cover;
+            border-radius: 5px;
+          }
+        }
+        
+        .item-details {
+          flex-grow: 1;
+          margin-right: 10px;
+          
+          .item-name {
+            font-size: 18px;
+            margin-bottom: 5px;
+          }
+          
+          .item-desc {
+            font-size: 14px;
+            margin-bottom: 5px;
+          }
+          
+          .item-price {
+            font-size: 16px;
+          }
+        }
+        
+        .item-remove-btn {
+          background-color: #ff5959;
+          color: #fff;
+          border: none;
+          border-radius: 5px;
+          font-size: 14px;
+          padding: 5px 10px;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          flex-shrink: 0;
+          
+          &:hover {
+            background-color: #e55050;
+          }
+        }
+      }
+    }
+  }
+  
+  .botones-vaciar-pagar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2rem;
+  
+    .clear-cart-btn {
+      margin: 0 1rem 1rem 0;
+      background-color: #ff5959;
+      //border: 1px solid #000;
+      color: #fff;
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+  
+      &:hover {
+        background-color: #e55050;
+        color: #fff;
+      }
+    }
+  
+    .checkout-btn {
+      margin: 0 1rem 1rem 0;
+      background-color: #00cc00;
+      border: none;
+      color: #fff;
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+  
+      &:hover {
+        background-color: #34a034;
+        color: #fff;
+      }
+    }
+  }
+
+  .cart-total {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  
+  .total-text {
+    margin-right: 10px;
+  }
+  
+  .total-price {
+    color: #00b894;
+  }
