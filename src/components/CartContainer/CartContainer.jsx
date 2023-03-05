@@ -104,10 +104,10 @@ export const CartContainer = () => {
                   </div>
                   <div className="item-details">
                     <h3 className="item-name">{producto.name}</h3>
-                    <p className="item-desc">Precio: {producto.precio}</p>
+                    <p className="item-desc">Precio: ${producto.precio}</p>
                     <p className="item-price">Cantidad: {producto.cantidad}</p>
                   </div>
-                  <button className="item-remove-btn">Eliminar</button>
+                  {/* <button className="item-remove-btn">Eliminar</button> */}
                 </div>
               </>
             ))
