@@ -34,7 +34,7 @@ export const ItemListContainer = ({ saludo }) => {
           resp.docs.map((product) => ({ id: product.id, ...product.data() }))
         )
       )
-      .catch((err) => console.log(err))
+      .catch((err) => console.log('error: ', err))
       .finally(() => setLoading(false));
 
     } else {
@@ -61,7 +61,7 @@ export const ItemListContainer = ({ saludo }) => {
   //         console.log(res);
   //         setProductos(res.filter(producto => producto.genre === idCategoria));
   //       })
-  //       .catch((err) => console.log(err))
+  //       .catch((err) => )
   //       .finally(() => setLoading(false));
 
   //   }else{

@@ -13,7 +13,7 @@ const ItemDetail = ({ idproducto }) => {
     const { agregarCarrito} = useCartContext()
 
     const onAdd = (cant) => {
-        console.log(cant)
+    
         agregarCarrito({ ...producto, cantidad: cant })
         setIsCount(false)
     }
@@ -24,7 +24,7 @@ const ItemDetail = ({ idproducto }) => {
         const query = doc(db, 'productos', `${idproducto}`)
         getDoc(query)
         .then(resp => setProducto({ id:resp.id, ...resp.data() }))
-        .catch((err) => console.log(err))
+        .catch((err) => console.log('error: ', err))
     }, [])
 
     // useEffect(() => {

@@ -5,7 +5,6 @@ import "./ItemList.scss";
 export const ItemList = memo(({ producto }) => {
   //const [loading, setLoading] = useState(true)
 
-  console.log(producto);
   return (
     <div className="producto" key={producto.id}>
       <>
