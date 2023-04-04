@@ -23,7 +23,7 @@ function App() {
         <Routes>
           <Route path="/" element={ <ItemListContainer saludo="Hola, Bienvenido" />} />
           <Route path="/categoria/:idCategoria" element={ <ItemListContainer saludo="Hola, Bienvenido" />} />
-          <Route path="/subcategoria/:idSubcategoria" element={ <ItemListContainer saludo="Hola, Bienvenido" />} />
+          <Route path="/subcategoria/:idSubCategoria" element={ <ItemListContainer saludo="Hola, Bienvenido" />} />
 
           <Route path="/detalle/:idProducto" element={ <ItemDetailContainer /> } />
 

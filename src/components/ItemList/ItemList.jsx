@@ -1,28 +1,10 @@
-import React, { memo, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { memo } from "react";
 import "./ItemList.scss";
+import Item from "../Item/Item";
 
-export const ItemList = memo(({ producto }) => {
-  //const [loading, setLoading] = useState(true)
-
+export const ItemList = memo(({ productos }) => {
+  
   return (
-    <div className="producto" key={producto.id}>
-      <>
-        <Link to={`/detalle/${producto.id}`}>
-          <img src={producto.foto} alt="imagen del producto" />
-        </Link>
-        <div className="contenido-producto">
-          <div>
-            <h3>{producto.name}</h3>
-
-            <p>${producto.precio}</p>
-          </div>
-
-          <Link to={`/detalle/${producto.id}`} className="boton-amarillo-block">
-            Ver
-          </Link>
-        </div>
-      </>
-    </div>
+    productos.map(producto =>   <Item key={producto.id}   producto={producto}/> )
   );
 });

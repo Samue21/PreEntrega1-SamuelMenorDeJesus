@@ -209,3 +209,19 @@
   h2 .orderid{
     color: #4CAF50;
   }
+
+  .return-btn{
+    margin: 0 1rem 1rem 0;
+    background-color: #ff5959;
+    border-radius: 8px;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: #e55050;
+      color: #fff;
+    }
+  }

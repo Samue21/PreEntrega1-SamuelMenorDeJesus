@@ -7,6 +7,7 @@ export const useCartContext = ()=>useContext(CartContext)
 export const CartContextProvider = ({children})=>{
     //estados y funciones globales
     const [cartList, setCarList] = useState([])
+
     const agregarCarrito= (newProducto)=>{
         //validamos si esta dentro del producto
         const productoExistente = cartList.find(
@@ -32,13 +33,19 @@ export const CartContextProvider = ({children})=>{
             }
         
     }
+    
+    const eliminarProducto = (id) => {
+      const nuevaLista = cartList.filter(producto => producto.id !== id);
+      setCarList(nuevaLista);
+    }
 
     const vaciarCarrito= ()=> setCarList( [] )
     return(
         <CartContext.Provider value={{
             cartList,
             agregarCarrito,
-            vaciarCarrito
+            vaciarCarrito,
+            eliminarProducto
          }}>
             {children}
         </CartContext.Provider>

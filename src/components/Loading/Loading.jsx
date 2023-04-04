@@ -1,11 +1,15 @@
-export const Loading = () =>{
+import "./Loading.scss";
 
-    return <center><h2>Cargando...</h2></center>
-
- 
-}
-
-
+export const Loading = () => {
+  return (
+    <center className="content-loading">
+      <h2>Cargando...</h2>
+      <div className="loading">
+        <div className="loading__spinner"></div>
+      </div>
+    </center>
+  );
+};
 
 export const MessageIdcompra = ({ showMessageId, setShowMessageId }) => {
   useEffect(() => {
@@ -22,10 +26,3 @@ export const MessageIdcompra = ({ showMessageId, setShowMessageId }) => {
     </div>
   );
 };
-
-
-
-
-
-
-

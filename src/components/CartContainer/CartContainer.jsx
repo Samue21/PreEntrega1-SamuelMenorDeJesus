@@ -1,89 +1,21 @@
-import {
-  addDoc,
-  collection,
-  doc,
-  getDoc,
-  getFirestore,
-  updateDoc,
-} from "firebase/firestore";
 import React, { useState } from "react";
 import { useCartContext } from "../../context/CartContext";
-import { TextComponent } from "../Condicionales/ComponentesCondicionales";
-import { MessageIdcompra } from "../Loading/Loading";
+import { NavLink } from "react-router-dom";
 import "./CartContainer.scss";
+import { CartList } from "../CartList/CartList";
+import { CartForm } from "../CartForm/CartForm";
 
 export const CartContainer = () => {
   const { cartList, vaciarCarrito } = useCartContext();
   const [orderId, setOrderId] = useState(null);
 
-  const [formData, setformData] = useState({
-    name: "",
-    tel: "",
-    correo: "",
-  });
-
-  const agregarOrden = (evt) => {
-    evt.preventDefault();
-    const orden = {};
-    orden.comprador = formData;
-    orden.productos = cartList.map(({ id, name, precio, cantidad }) => ({
-      id,
-      name,
-      precio,
-      cantidad,
-    }));
-    orden.total = cartList.reduce(
-      (total, producto) => total + producto.cantidad * producto.precio,
-      0
-    );
-
-    //Firestore
-    const db = getFirestore();
-    const ordersCollection = collection(db, "ordenes");
-
-    addDoc(ordersCollection, orden)
-      .then((resp) => {
-        setOrderId(resp.id);
-        actualizarStockProducts(orden.productos)})
-      .catch((error) => console.log(error));
-
+  const passSetorderId = (id) => {
+    setOrderId(id);
   };
 
-  const actualizarStockProducts = (orden) => {
-    //Firestore
-    const db = getFirestore();
-
-    orden.forEach((producto) => {
-      const query = doc(db, "productos", `${producto.id}`);
-      const productoUpdate = doc(db, "productos", `${producto.id}`);
-      getDoc(query)
-        .then((resp) =>
-          updateDoc(productoUpdate, {
-            stock: resp.data().stock - producto.cantidad,
-          })
-            .then(() => console.log("producto actualizado"))
-            .catch((error) => console.log('error: ', error))
-            .finally(() => {
-              vaciarCarrito();
-              setformData({
-                name: "",
-                tel: "",
-                correo: "",
-              });
-            })
-        )
-        .catch((err) => console.log(err));
-    });
-  };
-
-  const handletOnChange = (evt) => {
+  
 
 
-    setformData({
-      ...formData,
-      [evt.target.name]: evt.target.value,
-    });
-  };
 
   return (
     <div>
@@ -94,25 +26,15 @@ export const CartContainer = () => {
           {cartList.length == 0 ? (
             <center>
               <h2>Vacio</h2>
+              <NavLink className="return-btn" to='/'>
+               Volver
+              </NavLink>
             </center>
-          ) : (
-            cartList.map((producto) => (
-              <>
-                <div className="cart-item" key={producto.id}>
-                  <div className="item-img">
-                    <img src={producto.foto} alt="Nombre del Producto" />
-                  </div>
-                  <div className="item-details">
-                    <h3 className="item-name">{producto.name}</h3>
-                    <p className="item-desc">Precio: ${producto.precio}</p>
-                    <p className="item-price">Cantidad: {producto.cantidad}</p>
-                  </div>
-                  {/* <button className="item-remove-btn">Eliminar</button> */}
-                </div>
-              </>
-            ))
-          )}
+          ) : 
+            <CartList cartList={cartList} />
+          }
         </div>
+        {cartList.length == 0 ? <div className="cart-total"></div>: 
         <div className="cart-total">
           <span className="total-text">Total:</span>
           <span className="total-price">
@@ -122,57 +44,17 @@ export const CartContainer = () => {
               0
             )}
           </span>
-        </div>
+        </div> }
       </div>
+      {cartList.length == 0 ? <div className="botones-vaciar-pagar"></div>: 
       <div className="botones-vaciar-pagar">
         <button className="clear-cart-btn" onClick={vaciarCarrito}>
           Vaciar carrito
         </button>
-      </div>
-
-      <div className="payment-form-container">
-        <h2>Información del Comprador</h2>
-        <form onSubmit={agregarOrden} className="payment-form">
-          <label>
-            Nombre completo:
-            <input
-              type="text"
-              name="name"
-              onChange={handletOnChange}
-              placeholder="Ingresa tu Nombre"
-              required
-              value={formData.name}
-            />
-          </label>
-          <label>
-            Correo electrónico:
-            <input
-              type="email"
-              name="correo"
-              onChange={handletOnChange}
-              placeholder="Ingresa tu Correo electronico"
-              required
-              value={formData.correo}
-            />
-          </label>
-          <label>
-            Teléfono:
-            <input
-              type="tel"
-              name="tel"
-              pattern="^\d+$"
-              onChange={handletOnChange}
-              placeholder="Ingresa tu Telefono"
-              required
-              value={formData.tel}
-            />
-          </label>
-          <hr />
-          {
-            cartList.length > 0 ? <button type="submit">Generar la orden</button>: <h2>Agrega productos a tu carro para proceder al pago</h2>
-          }
-        </form>
-      </div>
+      </div> }
+      { cartList.length == 0 ? <div></div> :
+        <CartForm setOrderId={passSetorderId}/>
+      }
     </div>
   );
 };

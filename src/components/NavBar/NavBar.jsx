@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import logoSpartan from "../../assets/white-logo.png";
 import { CartWidget } from "../CartWidget/CartWidget";
 import "./Navbar.scss";

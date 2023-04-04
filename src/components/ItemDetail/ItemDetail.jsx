@@ -1,13 +1,10 @@
-import { doc, getDoc, getFirestore } from 'firebase/firestore'
-import { React, useEffect, useState } from 'react'
+import { React, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useCartContext } from '../../context/CartContext'
-import { gIdProdFetch } from '../../utils/gIdProdFetch'
 import { ItemCount } from '../ItemCount/ItemCount'
 import './ItemDetail.scss'
 
-const ItemDetail = ({ idproducto }) => {
-    const [producto, setProducto] = useState([])
+const ItemDetail = ({ producto }) => {
     const [isCount, setIsCount] = useState(true)
 
     const { agregarCarrito} = useCartContext()
@@ -17,26 +14,6 @@ const ItemDetail = ({ idproducto }) => {
         agregarCarrito({ ...producto, cantidad: cant })
         setIsCount(false)
     }
-
-    //Es Para traer un producto
-    useEffect(()=>{
-        const db = getFirestore()
-        const query = doc(db, 'productos', `${idproducto}`)
-        getDoc(query)
-        .then(resp => setProducto({ id:resp.id, ...resp.data() }))
-        .catch((err) => console.log('error: ', err))
-    }, [])
-
-    // useEffect(() => {
-    //     gIdProdFetch(idproducto)
-    //     .then((res) => {
-    //         console.log(res);
-    //         setProducto(res);
-    //     })
-    //     .catch((err) => console.log(err))
-    //     .finally(() => console.log('xd'));
-    
-    //   }, [])
 
 
   return (
