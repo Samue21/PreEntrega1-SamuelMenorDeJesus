@@ -3,7 +3,7 @@
 ## Sobre la proyecto
 E-Comerce creato en React Js sobre venta de ropa deportiva, con funcionalidad , filtros de busqueda, carrito, compra.
 ## Demo
-- https://stirring-dusk-384469.netlify.app
+- https://lively-dusk-fe2400.netlify.app
 
 ## Dependencias
 | Dependecia | Version | Descripcion |
